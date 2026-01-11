@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <title>NEPSE Tracker</title>
+</head>
+<body>
+  <div class="app">
+    <h1 class="title">NEPSE TRACKER</h1>
+  </div>
+
+  <!-- Index & Turnover Card -->
+  <div class="card">
+    <div class="card-left">
+      <div class="label">Nepse Index</div>
+      <div id="index" class="value">Loading...</div>
+      <div id="change" class="change">_</div>
+    </div>
+    <div class="card-right">
+      <div class="label">Turnover</div>
+      <div id="turnover" class="turnover">{{7*7}}</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="holdings">Holdings</button>
+    <button class="tab" data-tab="volume">Top Volume</button>
+    <button class="tab" data-tab="gainers">Top Gainers</button>
+    <button class="tab" data-tab="losers">Top Losers</button>
+  </div>
+
+ 
+  <div class="tab-content">
+
+    <!-- Holdings Container -->
+    <div class="content active" id="holdings">
+      <div class="holdings-list" id="holdingsList">
+        <div class="empty-state" id="emptyHoldings">
+          No holdings yet. Add your first stock.
+        </div>
+      </div>
+       <!-- Add Stock Button -->
+  <button class="add-stock-btn" id="addStockBtn">
+    + Add Stock
+  </button>
+    </div>
+
+    <!-- Top Volume -->
+    <div class="content" id="volume">
+      <p>Coming Soon</p>
+    </div>
+
+    <!-- Top Gainers -->
+    <div class="content" id="gainers">
+      <p>Coming Soon</p>
+    </div>
+
+    <!-- Top Losers -->
+    <div class="content" id="losers">
+      <p>Coming Soon</p>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="./popup.js"></script>
+</body>
+</html>

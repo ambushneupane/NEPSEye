@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "NEPSE Tracker",
+  "version": "1.0",
+  "description": "Shows NEPSE index",
+  "browser_action": {
+    "default_title": "NEPSE Index",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "https://www.onlinekhabar.com/*"
+  ],
+  "my_config": {
+    "API_URL": "https://www.onlinekhabar.com/smtm/home/indices-data/nepse/1d",
+    "TURNOVER_URL":"https://www.onlinekhabar.com/smtm/home/advance-decline/nepse"
+  }
+}
