@@ -239,7 +239,7 @@ async function renderHoldings(){
       const dailyPnL=(data.point_change)*stock.units;
 
       ltpEl.textContent= `Rs ${data.ltp.toFixed(2)}`;
-      dailyPnlEl.textContent=`Rs ${dailyPnL}`;
+      dailyPnlEl.textContent=`Rs ${dailyPnL.toFixed(2)}`;
       pnlEl.textContent= `Rs ${pnl.toFixed(2)}(${pnlPercent.toFixed(2)}%)`;
 
       pnlEl.classList.add(pnl >= 0 ? 'positive' : 'negative');
