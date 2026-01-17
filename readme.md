@@ -5,12 +5,10 @@ NEPSEye is a small Firefox extension built to quickly view the NEPSE index and m
 ## Features
 - NEPSE index overview
 - Market turnover display
-- Clean and minimal UI
-- Lightweight Firefox extension
-
-## Planned features
 - Portfolio holdings view
 - Profit / Loss (P&L) calculation
+
+## Planned features
 - Top gainers
 - Top losers
 - Top volume stocks
