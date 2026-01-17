@@ -9,7 +9,7 @@
 <body>
   <div class="app">
     <h1 class="title">NEPSEye</h1>
-  </div>
+  
 
   <!-- Index & Turnover Card -->
   <div class="card">
@@ -20,7 +20,7 @@
     </div>
     <div class="card-right">
       <div class="label">Turnover</div>
-      <div id="turnover" class="turnover">{{7*7}}</div>
+      <div id="turnover" class="turnover">__</div>
     </div>
   </div>
 
@@ -47,6 +47,37 @@
     + Add Stock
   </button>
     </div>
+     
+    <div class="modal-overlay hidden modal-display" id="addStockModal">
+      <div class="modal">
+        <h2 class="modal-title">Add Stock</h2>
+        <div class="modal-field">
+          <label>Stock Symbol</label>
+          <input type="text" id="stockSymbolInput" placeholder="e.g HRL">
+        </div>
+        <div class="modal-field">
+          <label>Buy Price (Rs)</label>
+          <input type="number" id="stockBuyPriceInput" placeholder="e.g. Rs 800" step="1">
+        </div>
+
+        <div class="modal-field">
+          <label>Units</label>
+          <input type="number" id="stockUnitsInput" placeholder="e.g. 100">
+        </div>
+
+        <div id="modal-actions">
+          <button class="modal-btn primary" id="confirmAddStock">
+            Add
+          </button>
+          <button class="modal-btn" id="cancelAddStock">
+            Cancel
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
 
     <!-- Top Volume -->
     <div class="content" id="volume">
@@ -62,10 +93,12 @@
     <div class="content" id="losers">
       <p>Coming Soon</p>
     </div>
-
+    
   </div>
-
+</div>
+<p id="stockError" class="error hidden error-overlay"></p>
   <!-- JS -->
   <script src="./popup.js"></script>
+
 </body>
 </html>

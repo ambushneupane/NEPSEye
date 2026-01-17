@@ -1,14 +1,19 @@
 {
   "manifest_version": 2,
-  "name": "NEPSE Tracker",
-  "version": "1.0",
-  "description": "Shows NEPSE index",
+  "name": "NEPSEye",
+  "version": "0.1.0",
+  "description": "View the NEPSE index and basic portfolio information at a glance without opening the website.",
+  "icons": {
+  "48": "icons/icon-48.png",
+  "96": "icons/icon-96.png",
+  "128": "icons/icon-128.png"
+},
   "browser_action": {
     "default_title": "NEPSE Index",
     "default_popup": "popup.html"
   },
   "permissions": [
-    "https://www.onlinekhabar.com/*"
+    "https://www.onlinekhabar.com/*","storage"
   ],
   "my_config": {
     "API_URL": "https://www.onlinekhabar.com/smtm/home/indices-data/nepse/1d",
