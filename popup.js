@@ -1,4 +1,4 @@
-const {API_URL,TURNOVER_URL}=browser.runtime.getManifest().my_config;
+const {API_URL,TURNOVER_URL}=browser.runtime.getManifest().nepseye_config;
 
 const app=document.querySelector('.app');
 
@@ -106,6 +106,7 @@ tabs.forEach(tab => {
 activateTab('holdings');
 
 let holdings = [];
+let editingIndex=null;
 
 // Open modal
 addStockBtn.addEventListener('click', () => {
@@ -131,9 +132,47 @@ confirmAddStock.addEventListener('click', async () => {
     return;
   }
 
-  const stockExists= holdings.find(stk=>stk.symbol.trim().toUpperCase()===symbol);
-  if (stockExists){
-    showStockError('Stock already exists.');
+  //Editing current Stock
+
+  if(editingIndex!==null){
+    try{
+      await fetchStockData(symbol);
+      holdings[editingIndex]={
+        symbol,
+        buyPrice,
+        units
+      }
+      await saveHoldings();
+    renderHoldings();
+
+    editingIndex = null;
+    addStockModal.classList.add('hidden');
+    return;
+    }catch(err){
+      showStockError('Invalid stock symbol. Try again.');
+      return;
+
+    }
+    
+  }
+
+  const existingHolding= holdings.find(stock=>stock.symbol.trim().toUpperCase()===symbol);
+  if (existingHolding){
+    // console.log(existingHolding);
+
+    const oldBuy=existingHolding.buyPrice;
+    const oldUnits= existingHolding.units;
+
+    const totalUnits= oldUnits+units;
+    console.log(totalUnits);
+    const totalAmount= oldUnits*oldBuy+units*buyPrice;
+    const avgBuyPrice=totalAmount/totalUnits;
+
+    existingHolding.units=totalUnits;
+    existingHolding.buyPrice= avgBuyPrice;
+    await saveHoldings();
+    renderHoldings();
+    addStockModal.classList.add('hidden');
     return;
   }
 
@@ -159,7 +198,7 @@ async function saveHoldings() {
 
 async function loadHoldings() {
   const data = await browser.storage.local.get('holdings');
-  console.log(data);
+  // console.log(data);
   holdings = data.holdings || [];
 }
 
@@ -217,6 +256,10 @@ async function renderHoldings(){
 
     holdingsList.append(card);
 
+  stockSymbolInput.value = '';
+  stockBuyPriceInput.value = '';
+  stockUnitsInput.value = '';
+
     //Delete Functionality
     const deleteBtn=card.querySelector('.delete-btn');
     deleteBtn.addEventListener('click',async()=>{
@@ -224,6 +267,21 @@ async function renderHoldings(){
       await saveHoldings();
       renderHoldings();
     })
+
+
+    //Edit functionality
+
+  const editBtn=card.querySelector('.edit-btn');
+
+  editBtn.addEventListener('click',()=>{
+    editingIndex = index;
+    const stock=holdings[index];
+    stockSymbolInput.value=stock.symbol;
+    stockBuyPriceInput.value=stock.buyPrice.toFixed(2);// make it toFixed on user input...
+    stockUnitsInput.value=stock.units.toFixed(2);
+    addStockModal.classList.remove('hidden');
+
+  })
 
     //Fetching LTP and Calculation of PnL
     const ltpEl= card.querySelector('.ltp');
@@ -253,6 +311,23 @@ async function renderHoldings(){
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let errorTimeout;
 
