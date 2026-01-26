@@ -1,5 +1,5 @@
-const {API_URL,TURNOVER_URL}=browser.runtime.getManifest().nepseye_config;
-
+const API_URL = 'https://www.onlinekhabar.com/smtm/home/indices-data/nepse/1d'
+const TURNOVER_URL='https://www.onlinekhabar.com/smtm/home/advance-decline/nepse';
 const app=document.querySelector('.app');
 
 const indexEl=document.getElementById('index');
