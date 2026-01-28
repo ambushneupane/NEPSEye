@@ -1,38 +1,46 @@
 # NEPSEye
 
-NEPSEye is a small Firefox extension built to quickly view the NEPSE index and market turnover without constantly opening the NEPSE website. It started as a personal tool to save a few seconds each time while keeping important market information easily accessible.
+🔗 Firefox Add-ons: https://addons.mozilla.org/firefox/addon/nepseye/
+
+NEPSEye is a lightweight Firefox extension that provides quick access to the NEPSE index and market turnover without repeatedly opening the NEPSE website. It initially started as a personal tool and later evolved into a public extension.
 
 ## Features
 - NEPSE index overview
 - Market turnover display
-- Portfolio holdings view
-- Profit / Loss (P&L) calculation
+- Portfolio holdings view (experimental)
+- Profit / Loss (P&L) calculation (experimental)
 
-## Planned features
-- Top gainers
-- Top losers
-- Top volume stocks
-
-> Some features are still under development and will be added gradually.
+## Roadmap
+- [ ] Top gainers
+- [ ] Top losers
+- [ ] Top volume stocks
 
 ## Why this exists
-I built this extension because I didn’t want to keep checking the NEPSE website throughout the day. Most of the time, a quick glance is enough, and saving a few seconds repeatedly helps with focus and productivity.
+A quick glance at market data is often enough. NEPSEye helps reduce distractions by showing essential NEPSE information directly in the browser.
 
 ## Current status
-This project is in an early stage.
-- Basic UI and layout are implemented
-- Index and turnover display works
-- Additional market and portfolio features are planned
+This project is in an early stage of development.
+- Core UI and layout are implemented
+- Index and turnover data works
+- Additional features are planned
 
-## Installation (Development)
+## Development Setup
 1. Clone this repository
 2. Open Firefox and go to `about:debugging`
 3. Click **This Firefox**
 4. Click **Load Temporary Add-on**
-5. Select the `manifest.json` file from the project directory
+5. Select the `manifest.json` file
+
+## Tech Stack
+- JavaScript
+- Firefox WebExtensions API
+- HTML / CSS
 
 ## Screenshots
-![alt text](image.png)
-## Notes
-This extension was built primarily for personal use, but others may find it useful as well. Suggestions and contributions are welcome.
+![NEPSEye](image.png)
 
+## Contributing
+Pull requests and suggestions are welcome.
+
+## Disclaimer
+This project is not affiliated with or endorsed by NEPSE.
